@@ -1,7 +1,7 @@
 import { useKindeAuth } from "@kinde-oss/kinde-auth-react";
 
 function App() {
-  const { isAuthenticated, getUser, login, register } = useKindeAuth();
+  const { isAuthenticated, getUser, login, register, logout } = useKindeAuth();
 
   let user;
   if (isAuthenticated) {
@@ -12,7 +12,10 @@ function App() {
     <div>
       {
         isAuthenticated ?
-          <h1>Welcome back {user.given_name} </h1> :
+          <div>
+            <h1>Welcome back {user.given_name} </h1>
+            <button onClick={logout}>Log Out</button>
+          </div> :
           <div>
             <button onClick={login}>Login</button>
             <button onClick={register}>Register</button>
