@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+import Header from "./components/header";
+import { ThemeProvider } from "./ThemeProvider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -20,7 +21,17 @@ export default async function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={poppins.className}>{children}</body>
+      <body className={poppins.className}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Header />
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
