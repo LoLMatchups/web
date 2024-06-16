@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import "./globals.css";
-import Header from "./components/header";
+import Header from "@/components/header";
 import { ThemeProvider } from "./ThemeProvider";
 
 const poppins = Poppins({
@@ -22,12 +22,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
           <Header />
           {children}
         </ThemeProvider>
